@@ -32,4 +32,4 @@ PRs accepted. This isn't very advanced at the moment, happy to see it become mor
 
 ## License
 
-MIT
+[MIT](LICENSE)
