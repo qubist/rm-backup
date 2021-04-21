@@ -10,6 +10,10 @@ The [reMarkable Wiki](https://remarkablewiki.com/tech/ssh#making_backups) descri
 
 ## Install
 
+### Dependencies
+* zsh
+
+### Instructions
 0. [Make sure SSH access is set up](https://remarkablewiki.com/tech/ssh)
 1. Put [`rm-backup.zsh`](/rm-backup.zsh) into your custom directory:
     * `cp rm-backup.zsh ~/.om-my-zsh/custom`
