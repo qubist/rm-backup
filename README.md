@@ -11,7 +11,7 @@ The [reMarkable Wiki](https://remarkablewiki.com/tech/ssh#making_backups) descri
 ## Install
 
 ### Dependencies
-* zsh
+* [Oh My Zsh](https://ohmyz.sh/)
 
 ### Instructions
 0. [Make sure SSH access is set up](https://remarkablewiki.com/tech/ssh)
