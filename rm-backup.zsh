@@ -1,12 +1,17 @@
 # Script to backup reMarkable content
 function rm-backup() {
+  # Color code variables
+  RED="\e[0;31m"
+  YELLOW="\e[0;33m"
+  RESET="\e[0m"
+
   # Check if SSH connection is available
   if ! ssh -q root@remarkable exit
   then
-    echo "Couldn't SSH to reMarkable. Make sure it's plugged in and awake?"
+    echo "${RED}Couldn't SSH to reMarkable. Make sure it's plugged in and awake?${RESET}"
     exit 1
   else
-    echo "SSH Connection to reMarkable successful"
+    echo "${YELLOW}SSH Connection to reMarkable successful${RESET}"
   fi
 
   # Path to the directory in which to make the backup. Don't use ~ in the path.
@@ -18,7 +23,7 @@ function rm-backup() {
   # Check that the backup folder exists
   if [[ ! -d "$BACKUPDIR" ]]
   then
-      echo "Could not find directory $BACKUPDIR"
+      echo "${RED}Could not find directory $BACKUPDIR${RESET}"
       exit 1
   fi
 
@@ -26,14 +31,15 @@ function rm-backup() {
   mkdir $dest
 
   # Back up each important thing from the reMarkable
-  echo "Backing up xochitl/ directory to $dest"
+  echo "${YELLOW}Backing up xochitl/ directory to $dest${RESET}"
   scp -r root@remarkable:~/.local/share/remarkable/xochitl/ $dest/files
 
-  echo "Backing up xochitl.conf to $dest"
+  echo "${YELLOW}Backing up xochitl.conf to $dest${RESET}"
   scp root@remarkable:~/.config/remarkable/xochitl.conf $dest
 
-  echo "Backing up xochitl executable to $dest"
-  scp root@remarkable:/usr/bin/xochitl $dest ||
+  echo "${YELLOW}Backing up xochitl executable to $dest${RESET}"
+  scp root@remarkable:/usr/bin/xochitl $dest
 
-  echo "Backup complete! See $dest"
+  echo "${YELLOW}Backup complete!${RESET}"
+  echo "${YELLOW}See $dest${RESET}"
 }
