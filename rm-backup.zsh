@@ -10,7 +10,7 @@ function rm-backup() {
   if ! ssh -q root@remarkable exit
   then
     echo "${RED}Couldn't SSH to reMarkable. Make sure it's plugged in and awake?${RESET}"
-    exit 1
+    return 1
   else
     echo "${YELLOW}SSH Connection to reMarkable successful${RESET}"
   fi
@@ -25,7 +25,7 @@ function rm-backup() {
   if [[ ! -d "$BACKUPDIR" ]]
   then
       echo "${RED}Could not find directory $BACKUPDIR${RESET}"
-      exit 1
+      return 1
   fi
 
   # Create the destination folder, named with the date and time of backup
@@ -43,4 +43,7 @@ function rm-backup() {
 
   echo "${YELLOW}Backup complete!${RESET}"
   echo "${YELLOW}See $dest${RESET}"
+  
+  return 0
 }
+
