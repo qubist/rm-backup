@@ -5,6 +5,7 @@ function rm-backup() {
   YELLOW="\e[0;33m"
   RESET="\e[0m"
 
+  echo "${YELLOW}Trying to connect to reMarkable with SSH${YELLOW}"
   # Check if SSH connection is available
   if ! ssh -q root@remarkable exit
   then
